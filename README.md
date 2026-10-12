@@ -1,364 +1,331 @@
-# Rossman-Price-Elasticity-Project
-# 🛒 Rossmann Retail Sales Analytics & Forecasting
+# Rossmann Retail Sales & Promotion Analytics
 
-![Python](https://img.shields.io/badge/Python-3.x-blue)
-![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-blue)
-![Power%20BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811)
-![Machine%20Learning](https://img.shields.io/badge/Machine%20Learning-Regression-success)
-![Status](https://img.shields.io/badge/Project-Completed-brightgreen)
+**Power BI + Python Retail Analytics Portfolio Project**  
+**Focus:** retail sales drivers · store performance · promotion effectiveness · customer traffic · holiday analysis · executive reporting
 
----
+This project analyzes historical **Rossmann retail store performance** to understand the operational factors associated with sales, customer traffic, promotions, store characteristics, holidays, and competitive conditions.
 
-# 📖 Table of Contents
-
-* Executive Summary
-* Business Problem
-* Project Objectives
-* Dataset
-* Project Workflow
-* Data Cleaning
-* Feature Engineering
-* Exploratory Data Analysis
-* Hypothesis Testing
-* Regression Analysis
-* Machine Learning
-* Power BI Dashboard
-* Business Insights
-* Business Recommendations
-* Business Impact
-* Technologies Used
-* Repository Structure
-* Future Improvements
+The project combines a Python/Jupyter analytical workflow with a **3-page Power BI dashboard** designed to translate detailed retail data into clear business insights for store and merchandising decisions.
 
 ---
 
-# 📌 Executive Summary
+## Executive Summary
 
-Retail organizations generate enormous volumes of transactional data every day, yet transforming this information into actionable business decisions remains a challenge. This project analyzes historical Rossmann retail sales data to uncover the factors driving daily sales performance and to build predictive models capable of improving forecasting accuracy.
+Retail performance varies across stores because of differences in customer traffic, promotional activity, store type, assortment, calendar patterns, and local competitive conditions.
 
-Using **Python**, **statistical analysis**, **machine learning**, and **Power BI**, the project investigates how promotions, customer traffic, store characteristics, holidays, assortment strategies, and competitive positioning influence store revenue. The analysis concludes with an interactive executive dashboard designed to help retail managers make data-driven operational decisions.
+The objective of this project was to move beyond a simple sales dashboard and answer practical business questions such as:
 
----
+- Which stores and store characteristics are associated with stronger sales performance?
+- How do promotions affect revenue and customer activity?
+- How does performance change across holidays and calendar periods?
+- Which operational factors should managers monitor when comparing store performance?
+- How can Power BI turn a large retail dataset into an executive decision-support tool?
 
-# 🏢 Business Problem
-
-Retail executives need accurate demand forecasts to optimize inventory, staffing, promotions, and store operations. Without understanding the factors that influence daily sales, organizations face challenges such as:
-
-* Overstocking or stock shortages
-* Inefficient promotional spending
-* Poor staffing allocation
-* Revenue forecasting errors
-* Inconsistent store performance
-* Limited visibility into sales drivers
-
-The objective of this project is to identify the variables that significantly impact retail sales and develop analytical solutions that improve business decision-making.
+The final deliverable combines exploratory analysis, statistical thinking, and interactive business intelligence to provide a multi-level view of Rossmann's retail performance.
 
 ---
 
-# 🎯 Project Objectives
+## Portfolio Highlights
 
-The project was designed to answer several key business questions:
-
-* Which variables have the greatest influence on daily sales?
-* Do promotions significantly increase revenue?
-* How do holidays affect purchasing behavior?
-* Which store types consistently outperform others?
-* Does customer traffic explain revenue differences?
-* How does nearby competition influence sales?
-* Can machine learning improve sales forecasting?
+- Analyzed a large historical retail dataset containing **800K+ records**.
+- Built an interactive **Power BI report with 3 analytical pages**.
+- Evaluated sales performance alongside **customer traffic, promotions, holidays, store characteristics, assortment, and competition distance**.
+- Used Python/Jupyter for analytical exploration and Power BI for executive reporting.
+- Created business-facing KPIs and comparative views to identify differences across stores and operating conditions.
+- Structured the report around a simplified dimensional analytical model suitable for BI reporting.
 
 ---
 
-# 📊 Dataset
+## Business Questions
 
-The Rossmann retail dataset contains historical daily operational and transactional information for multiple retail stores.
+The analysis was designed around six key questions:
 
-| Variable             | Business Value                                                     |
-| -------------------- | ------------------------------------------------------------------ |
-| Sales                | Target variable representing daily revenue                         |
-| Customers            | Measures customer traffic and purchasing demand                    |
-| Promo                | Indicates whether a promotion was active                           |
-| Promo2               | Long-term promotional campaigns                                    |
-| Store Type           | Enables comparison of operational performance across store formats |
-| Assortment           | Measures product assortment strategy                               |
-| Competition Distance | Estimates competitive market pressure                              |
-| State Holiday        | Captures holiday purchasing behavior                               |
-| School Holiday       | Measures seasonal demand shifts                                    |
-| Open                 | Identifies operational business days                               |
-| Day of Week          | Detects weekly purchasing patterns                                 |
-| Month & Year         | Captures seasonal and long-term trends                             |
+1. **Sales Performance** — How does revenue change over time and across stores?
+2. **Store Performance** — Which store characteristics are associated with stronger or weaker results?
+3. **Customer Traffic** — How closely does customer volume track sales performance?
+4. **Promotion Effectiveness** — How do promotional periods compare with non-promotional periods?
+5. **Holiday Effects** — How do state and school holidays affect retail activity?
+6. **Competitive Environment** — Does competition distance appear related to store performance?
 
 ---
 
-# 🔄 Project Workflow
+## Dataset
+
+The project uses historical Rossmann store-level operational and sales data.
+
+Key analytical fields include:
+
+| Area | Example Variables | Business Purpose |
+| --- | --- | --- |
+| Sales | Sales | Measure store revenue performance |
+| Customer Activity | Customers | Evaluate traffic and demand |
+| Promotions | Promo, Promo2 | Compare promotional and non-promotional periods |
+| Store Profile | Store Type, Assortment | Segment and compare store formats |
+| Competition | Competition Distance | Evaluate local competitive conditions |
+| Calendar | Date, Day of Week | Identify time-based patterns |
+| Holidays | State Holiday, School Holiday | Evaluate seasonal and event-driven effects |
+| Operations | Open | Separate operating from non-operating days |
+
+---
+
+## Conceptual Data Model
+
+The diagram below is a simplified analytical representation of the model used for reporting. It is intended to demonstrate BI/data-modeling logic rather than reproduce every field in the Power BI model.
+
+```mermaid
+flowchart LR
+    D[Date / Calendar\nDate · Day · Month · Holiday] --> F[Daily Store Performance\nSales · Customers · Open]
+    S[Store\nStore Type · Assortment] --> F
+    P[Promotion\nPromo · Promo2] --> F
+    C[Competition\nDistance · Market Context] --> F
+
+    F --> M[Measures & KPIs\nSales · Customers · Store Metrics]
+    M --> R[Power BI Report\nExecutive · Store · Promotion/Holiday]
+```
+
+### BI Design Logic
 
 ```text
-Business Understanding
-          │
-          ▼
-Data Cleaning
-          │
-          ▼
-Feature Engineering
-          │
-          ▼
-Exploratory Data Analysis
-          │
-          ▼
-Statistical Hypothesis Testing
-          │
-          ▼
-OLS Regression Analysis
-          │
-          ▼
-Machine Learning Models
-          │
-          ▼
-Power BI Dashboard
-          │
-          ▼
+Store / Calendar / Promotion / Competition Attributes
+                         │
+                         ▼
+              Daily Store Performance
+              • sales
+              • customers
+              • store activity
+                         │
+                         ▼
+                 DAX / KPI Layer
+                         │
+                         ▼
+                Power BI Dashboard
+```
+
+This structure helps separate descriptive store attributes from the daily performance measures being analyzed.
+
+---
+
+## Analytical Workflow
+
+```text
+Business Questions
+       │
+       ▼
+Data Preparation
+       │
+       ▼
+Exploratory Analysis
+       │
+       ▼
+Sales Driver Analysis
+       │
+       ▼
+Store / Promotion / Holiday Comparisons
+       │
+       ▼
+Power BI Data Model & Measures
+       │
+       ▼
+Executive Dashboard
+       │
+       ▼
 Business Insights & Recommendations
 ```
 
 ---
 
-# 🧹 Data Cleaning
+## Power BI Dashboard
 
-Data quality was improved through several preprocessing steps:
+The uploaded report contains **three dashboard pages**, each serving a different analytical purpose.
 
-* Removed unnecessary variables
-* Addressed missing values
-* Corrected inconsistent data types
-* Created analysis-ready datasets
-* Validated numerical fields
-* Prepared data for visualization and predictive modeling
+### 1. Executive Overview
 
-These steps improved model reliability and ensured accurate downstream analysis.
+The Executive Overview provides a high-level snapshot of retail performance for business users.
+
+The page includes:
+
+- Executive KPI card
+- Sales trend visualization
+- Comparative column and bar charts
+- Distribution / composition view
+- 100% stacked comparison
+- Interactive slicer
+- Page navigation
+
+The objective is to let a stakeholder quickly understand overall performance before drilling into individual stores or operating drivers.
+
+### 2. Store Analysis
+
+The Store Analysis page focuses on differences in performance across locations and store characteristics.
+
+The page includes:
+
+- Store-level KPI card
+- Multiple store comparison charts
+- Scatter analysis
+- Store composition / segmentation view
+- Detailed table
+- Interactive navigation
+
+This page is intended to help identify high- and low-performing locations and investigate how store characteristics relate to business performance.
+
+### 3. Promotion & Holiday Analysis
+
+The Promotion and Holiday Analysis page evaluates how sales behavior changes under different promotional and calendar conditions.
+
+The page includes:
+
+- Promotion / holiday KPI card
+- Stacked area trend analysis
+- Gauge visualization
+- Comparative bar chart
+- Multiple composition charts
+- Matrix / pivot-style analysis
+- Interactive slicer
+- Page navigation
+
+This page supports decisions around promotional timing, holiday planning, staffing, and inventory preparation.
 
 ---
 
-# ⚙️ Feature Engineering
+## Analytical Areas
 
-Several new analytical features were created to improve forecasting and business interpretation, including:
+### Sales & Customer Performance
 
-* Calendar-based variables
-* Seasonal indicators
-* Promotional flags
-* Time-based trends
-* Customer behavior metrics
+Sales were analyzed alongside customer traffic to evaluate whether stronger store performance was primarily associated with greater customer volume or other operational factors.
 
-Feature engineering enhanced the predictive capability of the machine learning models while improving business interpretability.
+This type of comparison helps distinguish between:
 
----
-
-# 📈 Exploratory Data Analysis
-
-The exploratory analysis examined sales behavior from multiple business perspectives.
-
-### Revenue Distribution
-
-* Investigated sales distribution and outliers
-* Identified revenue concentration among stores
-
-### Customer Traffic
-
-* Compared customer counts across stores
-* Examined customer volume as a driver of revenue
+- traffic-driven growth;
+- stronger revenue generation per customer;
+- store-format differences;
+- time-based changes in demand.
 
 ### Promotion Analysis
 
-* Compared promotional versus non-promotional sales
-* Measured promotional effectiveness
+Promotional periods were compared with non-promotional periods to evaluate how promotion activity corresponds with sales and customer behavior.
 
-### Store Performance
+The analysis is useful for assessing whether promotional activity appears to generate incremental demand and where deeper ROI analysis would be valuable.
 
-* Compared sales by store type
-* Evaluated assortment strategies
+### Store Segmentation
 
-### Competition Analysis
+Store type and assortment attributes were used to compare operational performance across different retail formats.
 
-* Investigated whether competitor proximity influences sales
+This provides a business-friendly way to identify whether particular store configurations consistently perform differently from others.
 
 ### Holiday Analysis
 
-* Compared sales during holidays and regular business days
+State and school holiday indicators were incorporated into the reporting layer to examine demand changes around calendar events.
 
-### Correlation Analysis
+This type of analysis can support:
 
-* Identified relationships between operational variables and revenue
+- inventory planning;
+- labor scheduling;
+- promotion timing;
+- seasonal forecasting.
 
----
+### Competition Analysis
 
-# 📊 Statistical Hypothesis Testing
+Competition distance provides a proxy for the local competitive environment surrounding a store.
 
-Several business hypotheses were tested.
-
-Examples include:
-
-* Do promotions significantly increase sales?
-* Do promotions increase customer traffic?
-* Do different store types generate different average sales?
-* Does assortment strategy influence revenue?
-* Do school holidays affect demand?
-* Does competition distance influence store performance?
-
-The statistical testing indicated that multiple business variables—including promotions, customer traffic, assortment, holidays, and store characteristics—have statistically significant relationships with sales.
+Rather than assuming that closer competition directly causes weaker performance, the variable is used as a comparative factor that can be evaluated alongside store type, customer traffic, promotion status, and other business conditions.
 
 ---
 
-# 📉 OLS Regression Analysis
+## Business Insights
 
-An Ordinary Least Squares (OLS) regression model was developed to quantify the relationship between operational variables and daily sales.
+The project highlights several useful retail analytics themes:
 
-Key findings included:
-
-* Promotions positively influence sales.
-* Customer traffic is one of the strongest predictors of revenue.
-* Store characteristics contribute to sales variation.
-* Multiple predictors were statistically significant.
-
-The regression model provided interpretable business insights while establishing a baseline for predictive modeling.
+- **Customer traffic is a major driver of daily sales**, making traffic and revenue important to analyze together.
+- **Promotional periods show meaningful performance differences** and should be evaluated alongside customer response rather than sales alone.
+- **Store characteristics matter** when comparing performance across locations.
+- **Holiday and calendar effects create demand variation** that can affect inventory and staffing requirements.
+- **Competition distance should be interpreted in context**, rather than treated as a standalone explanation of store performance.
+- Store-level reporting is more actionable when executives can move from overall KPIs into store, promotion, and holiday views within the same semantic model.
 
 ---
 
-# 🤖 Machine Learning
+## Business Recommendations
 
-Several regression models were developed and compared to forecast daily sales.
+Based on the analytical framework, retail managers could use these insights to:
 
-The project included:
-
-* Baseline models
-* Hyperparameter tuning
-* Model comparison
-* Prediction evaluation
-* Residual analysis
-* Feature importance analysis
-
-Performance was evaluated using regression metrics to identify the best-performing forecasting model.
+- Compare promotions using both sales and customer response.
+- Prioritize deeper investigation of consistently high- and low-performing stores.
+- Adjust inventory and staffing plans around recurring calendar and holiday patterns.
+- Segment store performance by format and assortment instead of relying only on company-wide averages.
+- Incorporate local competitive conditions into store-performance reviews.
+- Maintain a common Power BI KPI layer so executives and analysts work from consistent metric definitions.
 
 ---
 
-# 📊 Power BI Dashboard
+## Technologies & Skills
 
-The accompanying interactive dashboard provides executives with a high-level view of retail performance.
+### Technologies
 
-### Dashboard Features
+- Python
+- Pandas
+- NumPy
+- Jupyter Notebook
+- Power BI
+- DAX
+- Power Query
+- Git / GitHub
 
-* Executive KPI cards
-* Daily sales trends
-* Customer traffic analysis
-* Promotion effectiveness
-* Store performance comparison
-* Assortment insights
-* Holiday analysis
-* Interactive slicers and filters
-* Drill-down capabilities
+### Skills Demonstrated
 
-The dashboard enables business users to quickly identify revenue trends and operational opportunities without requiring technical expertise.
-
----
-
-# 💡 Key Business Insights
-
-The analysis produced several actionable findings:
-
-* Promotions significantly increase both customer traffic and sales.
-* Customer volume is one of the strongest predictors of daily revenue.
-* Store format influences overall sales performance.
-* Product assortment strategies impact revenue generation.
-* Holidays contribute to measurable changes in purchasing behavior.
-* Competition proximity influences store performance.
-* Seasonal demand patterns provide opportunities for inventory optimization.
+- Retail analytics
+- Exploratory data analysis
+- Data cleaning and transformation
+- KPI development
+- Dimensional / BI data modeling
+- Store-performance analysis
+- Promotion analysis
+- Holiday / seasonality analysis
+- Customer traffic analysis
+- Executive dashboard design
+- Data visualization
+- Business storytelling
 
 ---
 
-# 📌 Business Recommendations
+## Repository Structure
 
-Based on the findings, the following recommendations are proposed:
-
-* Optimize promotional timing using historical performance.
-* Improve demand forecasting through predictive analytics.
-* Adjust staffing levels based on expected customer traffic.
-* Allocate inventory according to seasonal demand.
-* Prioritize high-performing store formats.
-* Tailor assortment strategies to local demand.
-* Use predictive models to improve operational planning.
-
----
-
-# 📈 Business Impact
-
-This analytics solution helps retail decision-makers:
-
-* Improve forecasting accuracy
-* Reduce stock shortages and excess inventory
-* Optimize promotional investments
-* Improve labor planning
-* Increase operational efficiency
-* Enable faster executive reporting
-* Support data-driven strategic decisions
-
-*These benefits represent expected business outcomes based on the analytical findings and forecasting models developed in this project.*
-
----
-
-# 🛠️ Technologies Used
-
-| Category         | Tools                     |
-| ---------------- | ------------------------- |
-| Programming      | Python                    |
-| Data Analysis    | Pandas, NumPy             |
-| Visualization    | Matplotlib, Seaborn       |
-| Machine Learning | Scikit-learn, Statsmodels |
-| Dashboarding     | Power BI                  |
-| Development      | Jupyter Notebook          |
-| Version Control  | Git, GitHub               |
-
----
-
-# 📂 Repository Structure
+The repository currently contains the core project artifacts:
 
 ```text
-Rossmann-Retail-Sales-Analytics/
+Rossman-Price-Elasticity-Project/
 │
-├── data/
-│   ├── raw/
-│   └── processed/
-│
-├── notebooks/
-│   └── Price_Elasticity.ipynb
-│
-├── dashboard/
-│   └── Rossmann Dashboard.pbix
-│
-├── images/
-│   ├── dashboard-preview.png
-│   ├── sales-trends.png
-│   └── feature-importance.png
-│
-├── reports/
-│
-├── README.md
-│
-└── requirements.txt
+├── Price_Elasticity.ipynb   # Python / Jupyter analysis
+├── Rossman Dashboard.pbix   # Interactive Power BI report
+└── README.md                # Project case study and documentation
 ```
 
 ---
 
-# 🚀 Future Improvements
+## What This Project Demonstrates
 
-Potential enhancements include:
+This project demonstrates my ability to move through the analytics lifecycle from a large operational dataset to an executive-facing BI product:
 
-* Time series forecasting using XGBoost or LightGBM
-* Prophet or ARIMA forecasting models
-* Store clustering and segmentation
-* Price elasticity modeling
-* Automated Power BI refresh pipelines
-* Cloud deployment with Azure or AWS
-* Interactive web dashboard using Streamlit
+**Raw Retail Data → Data Preparation → Analytical Investigation → Data Modeling → KPI Development → Power BI Visualization → Business Recommendations**
+
+The value of the project is not only in creating visuals. It shows how store, customer, promotion, holiday, and competitive data can be organized into a reporting framework that helps business users compare performance and investigate the drivers behind it.
 
 ---
 
-# 🏁 Conclusion
+## Future Enhancements
 
-This project demonstrates a complete end-to-end retail analytics workflow—from data preparation and exploratory analysis to statistical testing, predictive modeling, and executive dashboard development. Rather than focusing solely on model performance, the analysis emphasizes translating data into actionable business decisions that improve forecasting, optimize promotions, enhance inventory planning, and support operational strategy. The combination of Python, machine learning, statistical analysis, and Power BI showcases both technical proficiency and the ability to communicate meaningful business insights to stakeholders.
+Potential next steps include:
+
+- Add automated refresh / pipeline orchestration.
+- Build a dedicated forecasting layer for future store sales.
+- Compare promotion uplift by store segment.
+- Add store clustering based on performance and operating characteristics.
+- Develop more formal elasticity / response models where appropriate pricing data is available.
+- Publish static dashboard screenshots in the repository for faster recruiter review.
+
+---
+
+## Author
+
+**Muzammil Paracha**  
+Data Analytics · SQL · Power BI · Databricks · Python · Business Intelligence
